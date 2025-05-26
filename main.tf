@@ -95,7 +95,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   source_image_reference {
   publisher = "Canonical"
   offer     = "UbuntuServer"
-  sku       = "20_04-lts"
+  sku       = "20.04-lts"
   version   = "latest"
 }
 

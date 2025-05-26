@@ -9,7 +9,7 @@ provider "azurerm" {
 
 resource "azurerm_resource_group" "website_rg" {
   name     = "website-rg"
-  location = "West Europe"
+  location = "Eat US"
 }
 
 resource "azurerm_virtual_network" "vnet" {

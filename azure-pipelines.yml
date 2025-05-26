@@ -24,10 +24,25 @@ steps:
     echo "##vso[task.setvariable variable=VM_IP]$(terraform output -raw public_ip_address)"
   displayName: 'Get VM IP'
 
+- task: DownloadSecureFile@1
+  name: downloadKey
+  inputs:
+    secureFile: 't2u-key'
+
+-- task: DownloadSecureFile@1
+  name: downloadKey
+  inputs:
+    secureFile: 't2u-key'
+
 - task: SSH@0
   inputs:
-    sshEndpoint: 'my-vm-connection'
+    sshEndpoint: ''
     runOptions: 'inline'
+    sshPublicKey: false
+    sshKey: '$(Agent.TempDirectory)/$(downloadKey.secureFilePath)'
+    userName: 'azureuser'
+    hostname: $(VM_IP)
+    port: '22'
     inline: |
       sudo apt update
       sudo apt install nginx git -y
@@ -35,3 +50,5 @@ steps:
       sudo git clone $(WEBSITE_REPO) /var/www/html
       sudo systemctl restart nginx
   displayName: 'Deploy Website Code'
+ 
+

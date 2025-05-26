@@ -29,11 +29,6 @@ steps:
   inputs:
     secureFile: 't2u-key'
 
--- task: DownloadSecureFile@1
-  name: downloadKey
-  inputs:
-    secureFile: 't2u-key'
-
 - task: SSH@0
   inputs:
     sshEndpoint: ''
@@ -50,5 +45,3 @@ steps:
       sudo git clone $(WEBSITE_REPO) /var/www/html
       sudo systemctl restart nginx
   displayName: 'Deploy Website Code'
- 
-

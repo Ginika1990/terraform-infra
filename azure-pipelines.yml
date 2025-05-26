@@ -21,7 +21,7 @@ steps:
   displayName: 'Terraform Apply'
 
 - script: |
-    echo "##vso[task.setvariable variable=VM_IP]$(terraform output -raw public_ip_address)"
+    echo "##vso[task.setvariable variable=VM_IP]=$(terraform output -raw public_ip_address)"
   displayName: 'Get VM IP'
 
 - task: DownloadSecureFile@1
@@ -43,5 +43,4 @@ steps:
       sudo apt install nginx git -y
       sudo rm -rf /var/www/html/*
       sudo git clone $(WEBSITE_REPO) /var/www/html
-      sudo systemctl restart nginx
-  displayName: 'Deploy Website Code'
+      sudo systemctl resta

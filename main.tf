@@ -60,7 +60,7 @@ resource "azurerm_public_ip" "public_ip" {
   name                = "website-ip"
   resource_group_name = azurerm_resource_group.website_rg.name
   location            = azurerm_resource_group.website_rg.location
-  allocation_method   = "Dynamic"
+  allocation_method   = "Static"
 }
 
 resource "azurerm_network_interface" "nic" {
@@ -95,7 +95,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   source_image_reference {
     publisher = "Canonical"
     offer     = "UbuntuServer"
-    sku       = "20_04-lts"
+    sku       = "Standard"
     version   = "latest"
   }
 

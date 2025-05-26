@@ -43,4 +43,4 @@ steps:
       sudo apt install nginx git -y
       sudo rm -rf /var/www/html/*
       sudo git clone $(WEBSITE_REPO) /var/www/html
-      sudo systemctl resta
+      sudo systemctl restart nginx
